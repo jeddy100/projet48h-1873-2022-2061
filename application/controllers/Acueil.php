@@ -66,23 +66,11 @@ class Acueil extends CI_Controller
       if ($this->input->post('nom') == $row->nom && $this->input->post('mdp') == $row->mdp) {
         $data['nom'] = $row->nom;
         $data['mdp'] = $row->mdp;
-        
-        $data['donner'] = $this->getizadaolynycodeattente();
-        // $data['nom'] = $this->$data['donner'][];
-        // echo $data['donner'][0]['iduser'];
-      $this->load->view('acceuiladmin',$data);
       }
     }
-    // echo 'cette utilisateur n est pas dans la liste';
-  }
-  public function getname($id){
-    $sql = "SELECT nom FROM user where id=$id";
-    $query = $this->db->query($sql);
-    $nom=nul;
-    foreach ($query->result() as $row){
-      $nom = $row->nom;
-    }
-    return $nom;
+    $data['donner'] = $this->getizadaolynycodeattente();
+    // echo $data['donner'][0]['iduser'];
+  $this->load->view('acceuiladmin',$data);
   }
   public function regimeasuivre(){
     $name = $this->input->post('nomregime') ;

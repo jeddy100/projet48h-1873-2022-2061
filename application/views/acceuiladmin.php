@@ -40,7 +40,7 @@
                           <tr>
                             <td><?php echo $donner[$i]['iduser']?></td>
                             <td><?php echo $donner[$i]['code']?></td>
-                            <td><a href="<?php echo site_url('Regime/acceptercode')?>?id=<?php echo $donner[$i]['iduser']?>&&code=<?php echo $donner[$i]['code']?>">accepeter le code</a></td>
+                            <td><a href="<?php echo site_url('Acueil/insereruncode')?>">accepeter le code</a></td>
                           </tr>
                      <?php  } ?>
                       </tbody>

@@ -41,8 +41,7 @@
                 </div>
                 <div class="text-center mt-4 font-weight-light">
                   Don't have an account? <a href="<?php echo site_url('regime/inscription'); ?>" class="text-primary">Create</a>
-                  <p> Se connecter en tant qu'admin :<a href="<?php echo site_url('Acueil/loginadmin'); ?>" class="text-primary">Admin</a></p>
-                
+                    <p> Se connecter en tant qu'admin :<a href="<?php echo site_url('Acueil/loginadmin'); ?>" class="text-primary">Admin</a></p>
                 </div>
               </form>
             </div>

@@ -24,7 +24,7 @@ class Regime extends CI_Controller {
         $this->load->view('acceuiladmin');
     }
      public function regimeForm() {
-        $this->load->model('repas_model');
+         $this->load->model('repas_model');
          $data=array();
          $data['repas'] = $this->repas_model->get_repas();
          $data['typerepas'] = $this->repas_model->get_typerepas();
@@ -64,14 +64,6 @@ class Regime extends CI_Controller {
         // echo 'jean';
         $this->load->view('inscription');
     }
-    public function inserersport(){
-        $nom = $this->input->post('nom') ;
-        $id = $this->input->post('duree') ;
-        $code = $this->input->post('taux') ;
-        $sql = "INSERT INTO SPORT(nom,taudefficacite) values($nom,$code)";
-        $this->db->query($sql);
-
-    }
 
     public function connectionuser()
   {
@@ -87,19 +79,14 @@ class Regime extends CI_Controller {
         $data['taille'] = $row->taille;
         $data['poid'] = $row-> poid;
         $data['objectif']= $row->objectif;
-        $this->load->model('repas_model');
-         $data['repas'] = $this->repas_model->get_repas();
-         $this->load->model('exercice_model');
-        $data['exercice'] = $this->exercice_model->get_exercice();
+      }
+    }
+    $data['regime'] = $this->getlisteregime();
+    $data['sport'] = $this->getlistesport();
     // echo count($data['regime']);
     // echo count($data['sport']);
     // echo $data['nom'];
-        $this->load->view('acceuilclient',$data);
-        break;
-        }
-        echo 'cette utilisateur n est pas dans la liste';
-        $this->load->view('login');    
-    }
+    $this->load->view('acceuilclient',$data);
   }
 	public function details() {
         // echo 'jena';
@@ -127,7 +114,6 @@ class Regime extends CI_Controller {
     $this->db->query($sql);
     $this->session->set_userdata('idsession',$id);
     // $this->load->view('d',$data);
-    // $this->load->view('login');
   }
   public function getlisteregime(){
     $sql = "SELECT * FROM regime ";
@@ -161,36 +147,14 @@ class Regime extends CI_Controller {
     return $data;
   }
   public function insereruncode() {
-    $code = $this->input->post('code') ;
+    $code 
+    = $this->input->post('code') ;
     $id = $this->input->post('iduser') ;
     // $nom =$this ->
-    $sql = "insert into codeenattente values($id,$code) ";
+    $sql = "insert into codeenattente values($code,$id) ";
     echo $sql;
-    $query = $this->db->query($sql);
+    // $query = $this->db->query($sql);
     // $this->load->view('modification_regime');
-    }
-    public function acceptercode(){
-        // $vola = 0;
-        $code = $this->input->get('code') ;
-        $id = $this->input->get('id') ;
-        // echo $id;
-        $sql = "select vola from user where id=$id";
-         $query = $this->db->query($sql);
-        //  $vola = (int)$vola + 10;
-        foreach ($query->result() as $row){
-            $vola = $row->vola;
-        }
-        // echo $vola;
-         $vola = $vola + 10;
-         echo $vola;
-        // echo $sqlref;
-        $sql1 = "update user set vola=$vola where id=$id";
-        echo $sql1;
-         $this->db->query($sql1);
-        $sqldeux = "delete from codeenattente where iduser=$id and code=$code ";
-        // echo $sqldeux;
-        $this->db->query($sqldeux);
-        $this->load->view('modification_regime');
     }
     public function getizadaolynycodeattente(){
         $sql = "SELECT * FROM codeenattente";

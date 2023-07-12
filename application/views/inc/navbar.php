@@ -133,10 +133,9 @@
                 <i class="typcn typcn-cog text-primary"></i>
                 Settings
                 </a>
-                <a class="dropdown-item" href="<?php echo site_url('Regime/login')?>">
-                
+                <a class="dropdown-item">
                 <i class="typcn typcn-power text-primary"></i>
-               LOGOUT
+                Logout
                 </a>
               </div>
             </li>

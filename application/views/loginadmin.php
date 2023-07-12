@@ -30,7 +30,7 @@
               </div>
               <h4>Hello! let's get started</h4>
               <h6 class="font-weight-light">Sign in to continue.</h6>
-                <form action="<?php echo base_url('Acueil/connectionadmin'); ?>" method="post" id="login-form">
+                <form action="<?php echo base_url('Accueil/connectionuser'); ?>" method="post" id="login-form">
                 <div class="form-group">
                   <input type="text" class="form-control form-control-lg" id="exampleInputEmail1" value="kevin" name="nom">
                 </div>

@@ -1,10 +1,19 @@
 <?php 
-    // echo count($regime);
-    // echo $regime[0]['nom'];
+    $prix = 0;
+    while($kilo <100){
+    $kilo =(int)$kilo+ $regime['tauxdefficacite'];
+    $prix = $prix + + $regime['prix'] ;    
+        echo $kilo;
+        echo 'jean';
+        echo $prix;
+}
+echo $regime['nom'];
+    echo $regime['prix'];
+    echo $regime['tauxdefficacite'];
+    echo $kilo;
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <!-- Required meta tags -->
   <meta charset="utf-8">
@@ -151,7 +160,6 @@
             <li class="nav-item nav-profile dropdown">
               <a class="nav-link dropdown-toggle  pl-0 pr-0" href="#" data-toggle="dropdown" id="profileDropdown">
                 <i class="typcn typcn-user-outline mr-0"></i>
-                <!-- <span class="nav-profile-name"><php echo $idsession ;?></span> -->
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
                 <a class="dropdown-item">
@@ -210,9 +218,7 @@
               </div>
               <div class="sidebar-profile-name">
                 <p class="sidebar-name">
-                <?php 
-                
-                  ?>
+                <!-- <?php echo $uti['user']?> -->
                 </p>
                 <p class="sidebar-designation">
                   Welcome
@@ -240,13 +246,14 @@
           <li class="nav-item">
             <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
               <i class="typcn typcn-briefcase menu-icon"></i>
-              <span class="menu-title">Code Promo</span>
+              <span class="menu-title">UI Elements</span>
               <i class="typcn typcn-chevron-right menu-arrow"></i>
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <!-- <li class="nav-item"> <a class="nav-link" href="<php echo site_url('regime/regimeEdit')?>">Buttons</a></li> -->
-                <!-- <li class="nav-item"> <a class="nav-link" href="<php echo site_url('regime/regimeEdit')?>">Dropdowns</a></li> -->
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/dropdowns.html">Dropdowns</a></li>
+                <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
               </ul>
             </div>
           </li>
@@ -347,22 +354,20 @@
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Tous les régimes disponibles</h4>
+                  <h4 class="card-title">le regime choisi</h4>
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
                         <tr>
                           <th>Nom</th>
-                          <!-- <th>Prix</th> -->
+                          <th>Prix</th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php for($i=0;$i<count($regime);$i++){ ?> 
-                        <tr>
-                          <td><?php echo $regime[$i]['nom'];?></td>
-                          <!-- <td><php echo $regime[$i]['tauxdefficacite'];?></td> -->
-                        </tr>
-                        <?php } ?>
+                      <tr><td>nom sport </td><td><?php echo $regime['nom']?></td></tr>
+                        <tr><td>efficacite </td><td><?php echo $regime['tauxdefficacite']?></td>
+                        <tr><td>prix</td><td><?php echo $regime['prix']?></td>
+                        <tr><td>objectif </td><td><?php echo $regime['objectif']?></td>
                       </tbody>
                     </table>
                   </div>
@@ -372,22 +377,16 @@
             <div class="col-lg-6 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Tous les activités sportives disponibles</h4>
+                  <h4 class="card-title">sport choisi</h4>
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
                         <tr>
-                          <th>Nom</th>
-                          <!-- <th>Durée</th> -->
                         </tr>
                       </thead>
                       <tbody>
-                      <?php for($i=0;$i<count($sport);$i++){ ?> 
-                        <tr>
-                          <td><?php echo $sport[$i]['nom'];?></td>
-                          <!-- <td><php echo $sport[$i]['tauxdefficacite'];?></td> -->
-                        </tr>
-                        <?php } ?>
+                        <tr><td>nom sport </td><td><?php echo $sport['nom']?></td></tr>
+                        <tr><td>efficacite </td><td><?php echo $sport['tauxdefficacite']?></td>
                       </tbody>
                     </table>
                   </div>
@@ -396,90 +395,44 @@
             </div>
           </div>
           <form action="<?php echo site_url('Acueil/validerleregime')?>" method="post">
-          <div class="row">
-            <div class="col-12 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Choix de régime et d'activité sportive</h4>
-                  <form class="form-sample">
-                    <div class="row">
-                      <div class="col-md-4">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Régime</label>
-                          <div class="col-sm-9">
-                            <select class="form-control" name="nomregime">
-                              <option value=""></option>
-                              <?php for ($i=0; $i <count($regime) ; $i++) { ?>
-                                <option value="<?php echo $regime[$i]['nom'];?>"><?php echo $regime[$i]['nom'];?></option>
-                              <?php } ?>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Sport</label>
-                          <div class="col-sm-9">
-                            <select class="form-control" name="nomsport">
-                              <option value=""></option>
-                              <?php for ($i=0; $i <count($sport) ; $i++) { ?>
-                                <option value="<?php echo $sport[$i]['nom'];?>"><?php echo $sport[$i]['nom'];?></option>
-                              <?php } ?>
-                            </select>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Objectif</label>
-                          <div class="col-sm-9">
-                            <input type="number" min="0" class="form-control" name="kilo" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <button type="submit" class="btn btn-primary mr-2">Valider</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-          </div>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+<!-- debut 
+     figure utilisant la librairie
+    The canvas element must have a unique id.
+
+    That's all!
+-->
+    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+
+    <script>
+        const xValues = [50,60,70,80,90,100,110,120,130,140,150];
+        const yValues = [7,8,8,9,9,9,10,11,14,14,15];
+
+        new Chart("myChart", {
+            type: "line",
+            data: {
+                labels: xValues,
+                datasets: [{
+                    fill: false,
+                    lineTension: 0,
+                    backgroundColor: "rgba(0,0,255,1.0)",
+                    borderColor: "rgba(0,0,255,0.1)",
+                     /* si borderColor = "rgba(0,0,0,0)" alors la ligne continue sera invisible */
+                    data: yValues
+                }]
+            },
+            options: {
+                legend: {display: false},
+                scales: {
+                    yAxes: [{ticks: {min: 6, max:16}}],
+                }
+            }
+        });
+        </script>
           </form>
         </div>
         <!-- content-wrapper ends -->
-        <form action="<?php echo site_url('Regime/insereruncode')?>" method="post">
-          <div class="row">
-            <div class="col-12 grid-margin">
-              <div class="card">
-                <div class="card-body">
-                  <h4 class="card-title">Choix de régime et d'activité sportive</h4>
-                  <form class="form-sample">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group row">
-                          <label class="col-sm-3 col-form-label">Entrer le code </label>
-                          <div class="col-sm-5">
-                            <input type="text" name="code" placeholder="14 chiffre">
-                            <!-- <input type="hidden" type="text" value="<php echo $iduser ;?>" name="iduser"> -->
-                            <?php echo $id ;?>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-md-4">
-                <!-- dff --><button type="submit" class="btn btn-primary mr-2">Valider</button>
-                      </div>
-                  </form>
-                  <!-- <php 
-                $ss = $_SESSION['idsession'];
-                echo $ss;
-                  ?> -->
-                </div>
-              </div>
-            </div>
-          </div>
-          </form>
         <!-- partial:../../partials/_footer.html -->
         <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">
@@ -512,4 +465,7 @@
   <!-- End custom js for this page-->
 </body>
 
+</html>
+
+</body>
 </html>
